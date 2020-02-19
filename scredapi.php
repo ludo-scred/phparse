@@ -26,16 +26,22 @@
     // On déclare une variable "valeur" qui sera donc la réponse de notre requete XPath. XPATH = LE CHEMIN
 
     //RELATIF => On utilise l'ID directement et on fini le chemin tranquillement.
-	$valeur_relative = $xpath->query('//*[@id="maincounter-wrap"]/div/span'); 
+	$casTotauxXPATH = $xpath->query('//*[@id="maincounter-wrap"]/div/span'); 
+	$casActifsXPATH = $xpath->query('//*[@class="number-table-main"]'); 
 
 	//ABSOLU => On écrit le chemin complet.   ATTENTION, parfois ca ne marche qu'avec 1 seul et parfois les deux.
 	//  $valeur_absolue = $xpath->query('/html/body/div[3]/div[2]/div[1]/div/div[4]/div/span'); 
 
 	// On range notre valeur dans un array. On la met au niveau 0, la première valeur de l'array.
-	$resultat = $valeur_relative[0]->nodeValue;
+	$casTotaux = $casTotauxXPATH[0]->nodeValue;
+	$casActifs = $casActifsXPATH[0]->nodeValue;
+	$casFinis = $casActifsXPATH[1]->nodeValue;
 
-	//var_dump($greenWaitingNumber);
-    print "Nombre de cas du coronavirus =====> ".$resultat;
+
+	var_dump($casTotauxXPATH);
+    print "Nombre de cas <b>TOTAUX</b> du coronavirus =====> ".$casTotaux;
+    print "<br>Nombre de cas <b>ACTIFS</b> du coronavirus =====> ".$casActifs;
+ 	print "<br>Nombre de cas <b>GUERIS</b> du coronavirus =====> ".$casFinis;
 
 
 ?>
